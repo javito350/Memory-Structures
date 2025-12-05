@@ -4,8 +4,8 @@
 
 | Date              |           |
 |:------------------|:----------|
-| 8 November 2024   | Assigned  |
-| 15 November 2024  | Due       |
+| 5 December 2024   | Assigned  |
+| 11 December 2024  | Due       |
 | Status            | [![Fundamentals](../../actions/workflows/main.yml/badge.svg?branch=main)](../../actions/workflows/main.yml) |
 |                   | [![Hack](../../actions/workflows/main.yml/badge.svg?branch=hack)](../../actions/workflows/hack.yml)         |
 
