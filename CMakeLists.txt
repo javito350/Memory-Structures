@@ -1,4 +1,5 @@
-cmake_minimum_required(VERSION 3.18)
+cmake_minimum_required(VERSION 4.1)
+set(PICO_BOARD pico_w)
 include($ENV{PICO_SDK_PATH}\\external\\pico_sdk_import.cmake)
 
 project(main C CXX ASM)
@@ -12,8 +13,6 @@ add_executable(${PROJECT_NAME}
   src/main.c
   src/headers/assignment.h
 )
-
-set(PICO_BOARD pico_w)
 
 pico_sdk_init()
 
