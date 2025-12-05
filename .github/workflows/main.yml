@@ -1,0 +1,27 @@
+name: GatorGrader
+
+on:
+  push:
+    branches: [main]
+
+jobs: 
+  grade:
+    runs-on: self-hosted
+    steps:
+    - uses: actions/checkout@v4.2.0
+      with: 
+        fetch-depth: '0'
+    - name: Hardware-in-the-loop
+      run: |
+        mkdir -p build && cd build
+        cmake -DCMAKE_BUILD_TYPE:STRING=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE -DCMAKE_C_COMPILER:FILEPATH=/usr/bin/arm-none-eabi-gcc -DCMAKE_CXX_COMPILER:FILEPATH=/usr/bin/arm-none-eabi-g++ --no-warn-unused-cli -S./. -G "Unix Makefiles" ../ && make && cd ..
+        gdb-multiarch build/main.elf -x tests/test.gdb
+    - name: Grade repository
+      run: |
+        gatorgrade
+      if: always()
+      env:   
+        PIPENV_VENV_IN_PROJECT: 1
+        PIPENV_IGNORE_VIRTUALENVS: 1
+    env:
+      GITHUB_TOKEN: ${{ secrets.WIZARD }}

@@ -1,0 +1,124 @@
+setup: |
+  echo "🏃 Running program output verification..."
+  bash tests/check.bash
+  echo "⚠️ This will only pass on the remote (i.e. GitHub)!"
+---
+- src/main.c:
+  - description: "[FUNDAMENTAL] src/main.c contains no TODOS"
+    category: Basic C
+    check: MatchFileFragment
+    options:
+      fragment: "TODO"
+      count: 0
+      exact: true
+  - description: "[FUNDAMENTAL] src/main.c struct is defined with the correct fields"
+    category: Memory Structures
+    check: MatchFileRegex
+    options:
+      regex: 'struct(\s)+[a-z0-9_]+(\s+)\{(\s+)(\n)?[int|double|long]+(\s+)[a-z0-9_]+\;(\n)?(\s+)struct(\s+)[a-z0-9_]+(\s+)\*[a-z0-9_]+;(\n)?\};'
+      count: 1
+      exact: true
+  - description: "[FUNDAMENTAL] src/main.c sufficient number of functions returning struct type exist"
+    category: Memory Structures
+    check: MatchFileRegex
+    options:
+      regex: 'struct(\s+)values(\s+)\*[a-z0-9_]+(\s+)?\('
+      count: 2
+      exact: false
+  - description: "[FUNDAMENTAL] src/main.c allocates memory on the heap for single struct nodes"
+    category: Memory Structures
+    check: MatchFileRegex
+    options:
+      regex: '=(\s+)?malloc\(sizeof\(struct(\s+)?[a-z0-9_]+\)\)'
+      count: 1
+      exact: false
+  - description: "[FUNDAMENTAL] src/main.c uses -> operator to dereference node memory locations to retrieve values"
+    category: Memory Structures
+    check: MatchFileRegex
+    options:
+      regex: '[a-z0-9_]+(\s+)?\-\>(\s+)?[a-z0-9_]+'
+      count: 1
+      exact: false
+  - description: "[FUNDAMENTAL] src/main.c size and length helper functions have correct signature"
+    category: Basic C
+    check: MatchFileRegex
+    options:
+      regex: 'int(\s+)?[a-z0-9_]+\('
+      count: 3
+      exact: false
+- tests/outputs:
+  - description: "[FUNDAMENTAL] Count of first list items test reutrns correctly"
+    category: Memory Structures
+    check: MatchFileFragment
+    options:
+      fragment: "FIRST LIST LEN: TRUE"
+      count: 1
+      exact: true
+  - description: "[FUNDAMENTAL] Size of first linked list nodes test reutrns correctly"
+    category: Memory Structures
+    check: MatchFileFragment
+    options:
+      fragment: "FIRST LIST SIZE: TRUE"
+      count: 1
+      exact: true
+  - description: "[FUNDAMENTAL] Count of second list items test reutrns correctly"
+    category: Memory Structures
+    check: MatchFileFragment
+    options:
+      fragment: "SECOND LIST LEN: TRUE"
+      count: 1
+      exact: true
+  - description: "[FUNDAMENTAL] Size of second linked list nodes test reutrns correctly"
+    category: Memory Structures
+    check: MatchFileFragment
+    options:
+      fragment: "SECOND LIST SIZE: TRUE"
+      count: 1
+      exact: true
+- docs/report.md:
+  - description: "[FUNDAMENTAL] docs/report.md contains responses to all questions"
+    category: Reflective Reports
+    check: MatchFileFragment
+    LO:
+        1:
+          PO:
+            - 2: "D"
+              rationale: "Develops awareness of ISAs through direct experimentation with a simple machine"
+            - 3: "I"
+              rationale: "Uses a simple theoretical machine to demonstrate interaction between components of hardware"
+            - 4: "D"
+              rationale: "Document prompts direct students to apply and synthesize knowledge gained from the activity"
+        2:
+          PO:
+            - 2: "D"
+              rationale: "Document prompts require students to describe relationship between areas of a theoretical machine"
+        3:
+          PO:
+            - 1: "D"
+              rationale: "Document prompts require students to describe relationship between areas of a theoretical machine"
+    options:
+      fragment: "TODO"
+      count: 0
+      exact: true
+  - description: "[FUNDAMENTAL] docs/report.md word count (250 words) is adequate to describe effort"
+    category: Reflective Reports
+    check: CountFileWords
+    LO:
+        1:
+          PO:
+            - 2: "D"
+              rationale: "Develops awareness of ISAs through direct experimentation with a simple machine"
+            - 3: "I"
+              rationale: "Uses a simple theoretical machine to demonstrate interaction between components of hardware"
+            - 4: "D"
+              rationale: "Document prompts direct students to apply and synthesize knowledge gained from the activity"
+        2:
+          PO:
+            - 2: "D"
+              rationale: "Document prompts require students to describe relationship between areas of a theoretical machine"
+        3:
+          PO:
+            - 1: "D"
+              rationale: "Document prompts require students to describe relationship between areas of a theoretical machine"
+    options:
+      count: 250
