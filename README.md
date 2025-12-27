@@ -1,53 +1,31 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/6juzERMX)
-![Vector art of 200 in hex, subtitle of course: Bare Metal in pale green and printer's black](https://raw.githubusercontent.com/allegheny-college-cmpsc-200-fall-2024/course-materials/media/images/CMPSC%20-%200xC8%20Banner.png)
+# Hi, I'm Javier Bejarano Jimenez 👋
 
-# CMPSC 200: Memory Structures in C
+I am a **Software Engineering** student at **Allegheny College** with a passion for understanding how software interacts with hardware. My work ranges from high-level Python automation to bare-metal Assembly programming.
 
-| Date              |           |
-|:------------------|:----------|
-| 5 December 2024   | Assigned  |
-| 11 December 2024  | Due       |
-| Status            | [![Fundamentals](../../actions/workflows/main.yml/badge.svg?branch=main)](../../actions/workflows/main.yml) |
-|                   | [![Hack](../../actions/workflows/main.yml/badge.svg?branch=hack)](../../actions/workflows/hack.yml)         |
+## 🛠 Tech Stack
+* **Languages:** Python, C, 6502 Assembly, VBA
+* **Systems:** Memory Management (Stack/Heap), Computer Organization, Low-Level Logic
+* **Tools:** Git, GitHub Actions, VS Code, Pico SDK
 
-## Introduction
+## 🚀 Featured Projects
 
-This week, we explored the implications of several assembly-level assumptions carried forward to `C`, including memory locations and sizes. In addition, we learned about pointers, a feature of `C` similar to `indirect addressing`. All of these assumptions and features form around the concepts of `array`s and `struct`s, two memory structures that feature an interplay between the `stack` and the `heap`.
+### [Memory-Structures-in-C](https://github.com/javito350/Memory-Structures-in-C)
+* Implemented a **Circular Linked List** on the Raspberry Pi Pico.
+* Managed dynamic memory allocation (Heap) and pointer "re-knitting" for node removal.
+* Developed rigorous logic to handle edge cases like head-node deletion and infinite loops.
 
-In this assignment, you'll create a `struct` from a list of numbers and explore some features of the data type. You're also tasked with removing a value and re-knitting a cohesive `linked list` (a sequential group of `struct`s) so that the list keeps its integrity.
+### [6502-Assembly-project](https://github.com/javito350/6502-Assembly-project)
+* **Bare-metal programming** for the MOS 6502 processor.
+* Developed a Fibonacci sequence generator using low-level registers (A, X, Y) and memory mapping.
+* Explored hardware-level signals and instruction sets for system optimization.
 
-### `tl;dr`
+### [File-Sorting-Algorithm-Benchmarker](https://github.com/javito350/File-Sorting-Algorithm-Benchmarker)
+* A **Python** utility that analyzes the efficiency (Big-O) of different sorting algorithms.
+* Built to visualize performance data and optimize data processing workflows.
 
-Your task is the following:
+## 📈 Current Focus
+I am currently diving deeper into **Systems Programming** and exploring how to optimize backend algorithms for resource-constrained environments.
 
-* create a `linked list` from a global array called `data`
-  * this should use a `struct` with _one_ field (`value`) which also points to the next "node"
-* the program should report the memory size and length of the `linked list`
-* the program should allow us to remove any node from the `linked list` by value
-  * in this example, we should remove any values that are _greater than or equal to_ an arbitrary
-  * removal must be done by completing the function `remove_node`, and cannot be achieved by ignoring the values when creating the `linked list`
-
-## Instructions
-
-To recieve credit for this assignment:
-
-* write:
-  * the main loop of the program in [main.c](src/main.c) file in the `src` folder
-* complete the documentation in [docs/report.md](docs/report.md)
-
-> Note: You may work in pairs, but you should submit _your own assignment_.
-
-## Debugging the program
-
-* Assignments contain configuration meant to automate the `Pico Debug` button under the `Run and Debug` menu in VSCode.
-* Recall that, to see your output,  you'll need to use the `Serial Monitor` to communicate with your test device setup.
-
-## Assignment "Hack"
-
-> Your instructor encourages you to talk this section over with the instructor themselves, a TL, or a friend!
-
-So, two complications:
-
-* in this `Hack`, you have to remove every node containing a number _below_ any arbitrary value, reconnecting the list into one continuous `linked list`, _and_
-* reassemble the list as a _circular_ linked list
-  * this means that the end of the list points to the node at the beginning, thus forming a "circle"
+---
+📫 **How to reach me:** [bejaranojimenez01@allegheny.edu](mailto:bejaranojimenez01@allegheny.edu)
+📍 **Location:** Meadville, PA
